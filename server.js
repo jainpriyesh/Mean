@@ -11,11 +11,10 @@ app.listen(2000, function () {
 });
 
 
-/*
+
 var Meow = mongoose.model('Meow',
   {
-    text : String,
-    username : String 
+    text : String
   });
 
   app.get('/meows', function(req, res, next){
@@ -23,5 +22,15 @@ var Meow = mongoose.model('Meow',
         return res.json(meows);
       });
   });
-*/
+  
+app.post('/meows', function(req, res, next){	
+		var newMeow = new Meow({
+			text: req.body.newMeow		
+		});
+		newMeow.save(function(err){
+			return res.send("Added Successfully");
+	});	
+	});
+
+
 
